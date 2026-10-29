@@ -8,15 +8,15 @@ paramsdic = {
     "t0": 0.,
     "per": 32.9,
     "rp_e": 2.37,
-    "rp": 0, #0.05 times st_rad
+    "rp": 0.05, # 0.05 times st_rad
     "a_au": 0.1429,
-    "a": 0,   #75 times st_rad
-    "inc": 90.,
-    "ecc": 0.,
-    "w": 90.,
-    "limb_dark": "nonlinear",
-    "u": [0.5, 0.1, 0.1, -0.1],
-    "st_rad": 0.411
+    "a": 75,   # 75 times st_rad
+    "inc": 90.,     # take to be 90, not listed in NEA default entry
+    "ecc": 0.2,
+    "w": 0.,    # take to be 0, -5 deg in NEA
+    "limb_dark": "quadratic",
+    "u": [0.244, 0.286],
+    "st_rad": 0.411     # host star radius, in solar radii
 }
 
 # Function to convert pl_rad to function of planetary radius
@@ -27,9 +27,11 @@ def radius_convert(pl_rade, st_rad, rade_per_radsol = 109): #Can change conversi
 def semimajor_convert(pl_a, st_rad, radsol_per_au = 215.032):
     return (pl_a * radsol_per_au) / st_rad
 
-# Convert radius and a to proper units for batman
-paramsdic["rp"] = radius_convert(paramsdic["rp_e"], paramsdic["st_rad"])
-paramsdic["a"] = semimajor_convert(paramsdic["a_au"], paramsdic["st_rad"])
+# Convert radius and a to proper units for batman, if rp and a not given
+if paramsdic["rp"] == 0:
+    paramsdic["rp"] = radius_convert(paramsdic["rp_e"], paramsdic["st_rad"])
+if paramsdic["a"] == 0:
+    paramsdic["a"] = semimajor_convert(paramsdic["a_au"], paramsdic["st_rad"])
 
 params = batman.TransitParams()    #Create params object
 
@@ -57,7 +59,7 @@ flux = m.light_curve(params)
 
 plt.plot(t, flux)
 plt.title(paramsdic["pl_name"] + ' Transit Model')
-plt.xlabel('Time (d)')      # I think the time is in days, but I'm not sure :/
+plt.xlabel('Time (d)')      # Pretty sure the units are days
 plt.ylabel('Normalized Flux')
 plt.savefig(paramsdic["pl_name"] + '_assignment1_taskF.png')
 plt.show()
