@@ -1,0 +1,15 @@
+# Parameters for K2-18b from the NEA, without calculated a/st_rad and rp/st_rad
+transit:
+  pl_name: "K2-18 b"
+  t0: 0.0 # time of inferior conjunction
+  per: 32.9 # orbital period in days
+  inc: 90 # orbital inclination (in degrees)
+  ecc: 0.2 # eccentricity
+  w: 0.0 # longitude of periastron (in degrees)
+  u: [0.244, 0.286] # limb darkening coefficients [u1, u2]
+  limb_dark: "quadratic" # limb darkening model
+  st_rad: 0.411 # host star radius in solar radii
+  rp_e: 2.37 # planet radius (in r_e)
+  a_au: 0.1429 # semi-major axis in AU
+classifier:
+  type: cnn # [cnn, rf] for Convolutional Neural Network and Random Forest

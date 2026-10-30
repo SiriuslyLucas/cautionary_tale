@@ -1,0 +1,5 @@
+commit 10bc296f781c0c75c7691ac7fe8071add467a285 (HEAD -> main, origin/main, origin/HEAD)
+Author: SiriuslyLucas <lucaslawrence000@gmail.com>
+Date:   Thu Oct 29 19:06:46 2026 +0100
+
+    Replaced assigment1_taskE.txt after making a new, clean conda environment
