@@ -2,8 +2,8 @@ transit:
   pl_name: "K2-18 b"
   t0: 0.0 # time of inferior conjunction
   per: 32.9 # orbital period in days
-  rp: 0.05 # planet radius (in units of stellar radii)
-  a: 75 # semi-major axis (in units of stellar radii)
+  rp: 0.053 # planet radius (in units of stellar radii)
+  a: 74.764 # semi-major axis (in units of stellar radii)
   inc: 90 # orbital inclination (in degrees)
   ecc: 0.2 # eccentricity
   w: 0.0 # longitude of periastron (in degrees)

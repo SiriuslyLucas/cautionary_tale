@@ -34,6 +34,12 @@ After installation, you can run daneel from the command line:
 daneel -i <input_file> --transit [--output lightcurve.png]
 ```
 
+Daneel can only be run from the command line after proper installation. Alternatively, daneel can be run with the command:
+
+```bash
+python [PATH TO DANEEL SRC]/src/daneel/__main__.py -i <input_file> --transit [--output lightcurve.png]
+```
+
 ### Command-line options
 
 - `-i, --input`: Input parameter file (required)

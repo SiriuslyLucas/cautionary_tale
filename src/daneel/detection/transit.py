@@ -101,7 +101,6 @@ class Transit:
             plt.show()
         plt.close()
         print(f"Light curve saved to {output_file}")
-        print(self.params.rp)
 
     def run(self, output_file='light_curve.png'):
         """
