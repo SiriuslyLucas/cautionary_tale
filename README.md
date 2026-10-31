@@ -51,6 +51,10 @@ python [PATH TO DANEEL SRC]/src/daneel/__main__.py -i <input_file> --transit [--
 ### Examples
 
 ```bash
+# Plot light curve of K2-18b from parameter file
+daneel -i examples/K2-18b.yaml --transit --output K2-18b_lightcurve.png
+# Can run this command with a parameter file outside of the github repository, if path is provided
+
 # Run exoplanet detection
 daneel -i examples/params.yaml --transit --output lightcurve.png
 
