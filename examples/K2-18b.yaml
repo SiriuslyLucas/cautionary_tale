@@ -6,7 +6,7 @@ transit:
   a: 74.764 # semi-major axis (in units of stellar radii)
   inc: 90 # orbital inclination (in degrees)
   ecc: 0.2 # eccentricity
-  w: 0.0 # longitude of periastron (in degrees)
+  w: -5.7 # longitude of periastron (in degrees)
   u: [0.244, 0.286] # limb darkening coefficients [u1, u2]
   limb_dark: "quadratic" # limb darkening model
   st_rad: 0.411 # host star radius in solar radii
