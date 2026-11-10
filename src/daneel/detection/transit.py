@@ -102,6 +102,38 @@ class Transit:
         plt.close()
         print(f"Light curve saved to {output_file}")
 
+    def plot_multi_light_curve(self, output_file='mult_lightcurve.png', num=1, show=False):
+        """
+        Function to plot multiple light curves from transit model
+        :param output_file:
+        :param show:
+        """
+        #if not hasattr(self, 'flux'):
+            #self.compute_light_curve()
+        if num == 2:
+            radii = [0.5, 1]
+        elif num > 2:
+            radii = [0.5, 1] + list(range(2, num, 1))
+        else:
+            radii = [1]
+
+        for i in radii:
+            original_rad = self.params.rp
+            self.params.rp = i * self.params.rp
+            self.compute_light_curve()
+            self.params.rp = original_rad
+            plt.plot(self.t, self.flux, label=str(i) + 'x Radius')
+
+        plt.title(str(self.params.pl_name) + ' Multi Light Curve')
+        plt.xlabel('Time from central transit (days)')
+        plt.ylabel('Relative flux')
+        plt.legend()
+        plt.savefig(output_file, dpi=150)
+        if show:
+            plt.show()
+        plt.close()
+        print(f"Light curve saved to {output_file}")
+
     def run(self, output_file='light_curve.png'):
         """
         Function to run everything—compute the light curve from transit model and plot it

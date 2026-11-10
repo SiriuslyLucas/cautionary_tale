@@ -23,6 +23,7 @@ def main():
     actions.add_argument("-d", "--detect", action="store_true", help="Run exoplanet detection")
     actions.add_argument("-a", "--atmosphere", action="store_true", help="Run atmospheric characterisation")
     parser.add_argument("-o", "--output", default="lc.png", help="Output image for --transit")
+    parser.add_argument("-r", "--radii", default=1, help="Plot multiple radii")
 
     args = parser.parse_args()
 
@@ -31,9 +32,18 @@ def main():
 
     input_pars = Parameters(args.input_file).params
 
+    try:
+        args.radii = int(args.radii)
+    except:
+        args.radii = 1
+        print('Please enter integer number of radii, defaulting to 1...')
+
     if args.transit:
         transit = Transit(input_pars['transit'])
-        transit.plot_light_curve(args.output)
+        if args.radii != 1:
+            transit.plot_multi_light_curve(args.output, args.radii)
+        else:
+            transit.plot_light_curve(args.output)
     elif args.detect:
         parser.error("detection is not implemented yet; use --transit")
     elif args.atmosphere:
